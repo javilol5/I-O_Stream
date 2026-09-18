@@ -119,5 +119,34 @@ public class Metodos {
         }
     }
 
+    //3-1
+
+    public static void grabar3(String rutaFich, String cadea) {
+
+
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
