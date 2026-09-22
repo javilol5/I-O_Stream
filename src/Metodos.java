@@ -77,7 +77,7 @@ public class Metodos {
 
         try {
             FileInputStream entrada = new FileInputStream(rutaOriginal);
-            FileOutputStream saida = new FileOutputStream(rutaCopia,true);
+            FileOutputStream saida = new FileOutputStream(rutaCopia, true);
 
             int byteLeido;
 
@@ -123,13 +123,55 @@ public class Metodos {
 
     public static void grabar3(String rutaFich, String cadea) {
 
+        try {
+            FileOutputStream ficheiro = new FileOutputStream(rutaFich);
+            DataOutputStream datos = new DataOutputStream(ficheiro);
 
+            for (int i = 0; i < 3; i++) { //contador
+
+                System.out.println("escribindo a cadea: " + cadea);
+
+                datos.writeUTF(cadea);
+
+                System.out.println("tamano do ficheiro: " + datos.size() + " bytes");
+            }
+
+            System.out.println("tamano final do ficheiro: " + datos.size() + " bytes");
+
+            datos.close();
+            ficheiro.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al escribir el ficheiro");
+        }
     }
 
+    //3-2
+    public static void leerTexto(String rutaFich) {
+
+        try {
+            FileInputStream ficheiro = new FileInputStream(rutaFich);
+            DataInputStream datos = new DataInputStream(ficheiro);
+
+            while (datos.available() > 0) {
+
+                System.out.println("quedan: " + datos.available() + " bytes por ler");
+
+                String cadea = datos.readUTF();
+
+                System.out.println("cadea: " + cadea);
+            }
+
+            System.out.println("Xa non queda nada por ler");
+
+            datos.close();
+            ficheiro.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el ficheiro");
+        }
+    }
 }
-
-
-
 
 
 
